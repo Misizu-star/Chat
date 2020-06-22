@@ -1,0 +1,56 @@
+﻿<UserControl x:Class="WpfApp1.Search"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1"
+             mc:Ignorable="d" 
+             d:DesignHeight="32" d:DesignWidth="250" FontFamily="Microsoft YaHei UI">
+    <UserControl.Resources>
+        <Style x:Key="SearchStyle" TargetType="TextBox">
+            <Style.Setters>
+                <Setter Property="FontSize" Value="14"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+                <Setter Property="Margin" Value="10 0 10 0"/>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="Foreground" Value="Gray"/>
+                <Setter Property="Text" Value="搜索一下吧"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="Control.IsFocused" Value="False">
+                    <Setter Property="Foreground" Value="Gray"/>
+                    <Setter Property="Text" Value="搜索一下吧"/>
+                </Trigger>
+                <Trigger Property="Control.IsFocused" Value="True">
+                    <Setter Property="Foreground" Value="Black"/>
+                    <Setter Property="Text" Value=""/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="LogoStyle" TargetType="Label">
+            <Style.Setters>
+                <Setter Property="FontFamily" Value="pack://application:,,,/Resources/#icomoon"/>
+                <Setter Property="FontSize" Value="16"/>
+                <Setter Property="Margin" Value="0 0 10 0"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="Foreground" Value="Gray"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Border BorderThickness ="1" Background="White" CornerRadius="10">
+            <DockPanel>
+                <Label DockPanel.Dock="Right" Content="&#xe906;" Style="{StaticResource LogoStyle}"/>
+                <TextBox Style="{StaticResource SearchStyle}"/>
+            </DockPanel>
+        </Border>
+    </Grid>
+</UserControl>

@@ -1,0 +1,69 @@
+﻿<UserControl x:Class="WpfApp1.Friend"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1"
+             mc:Ignorable="d" 
+             d:DesignHeight="50" MinHeight="50" d:DesignWidth="250" FontFamily="Microsoft YaHei UI" Margin="0 4" Loaded="UserControl_Loaded">
+    <UserControl.Resources>
+        <Style x:Key="LabelStyle" TargetType="Label">
+            <Style.Setters>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style.Setters>
+        </Style>
+        
+        <Style x:Key="LabelSetStyle" TargetType="Label">
+            <Style.Setters>
+                <Setter Property="FontFamily" Value="pack://application:,,,/Resources/#icomoon"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="Foreground" Value="Gray"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="Black"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="Foreground" Value="Gray"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+        <Style x:Key="BorderStyle" TargetType="Border">
+            <Style.Setters>
+                <Setter Property="Background" Value="White"/>
+                <Setter Property="CornerRadius" Value="10"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#a1c2ff"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="Background" Value="White"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <Border Style="{StaticResource BorderStyle}">
+            <DockPanel>
+                <Image x:Name="F_img" DockPanel.Dock="Left" Margin="8 0 0 0" Width="40" Source="Resources/233.jpg" HorizontalAlignment="Center">
+                    <Image.Clip>
+                        <RectangleGeometry RadiusX="20" RadiusY="20" Rect="0,0,40,40"/>
+                    </Image.Clip>
+                </Image>
+                <Label x:Name="more" DockPanel.Dock="Right" Content="&#xe907;" Style="{StaticResource LabelSetStyle}"></Label>
+                <DockPanel Width="45" LastChildFill="False" DockPanel.Dock="Right">
+                    <Label x:Name="F_time" Style="{StaticResource LabelStyle}" Foreground="#aaaaaa" DockPanel.Dock="Top"/>
+                    <Label x:Name="F_new" Foreground="Red" DockPanel.Dock="Top" FontFamily="pack://application:,,,/Resources/#icomoon" HorizontalContentAlignment="Right"/>
+                </DockPanel>
+                <DockPanel LastChildFill="False">
+                    <Label x:Name="F_name" Style="{StaticResource LabelStyle}" DockPanel.Dock="Top"/>
+                    <Label x:Name="F_msg" Style="{StaticResource LabelStyle}" Foreground="Gray" DockPanel.Dock="Top"/>
+                </DockPanel>
+            </DockPanel>
+        </Border>
+    </Grid>
+</UserControl>

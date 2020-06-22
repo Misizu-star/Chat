@@ -1,0 +1,90 @@
+﻿<UserControl x:Class="WpfApp1.Chat"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:WpfApp1"
+             mc:Ignorable="d" 
+             d:DesignHeight="540" d:DesignWidth="530" FontFamily="Microsoft YaHei UI">
+    <UserControl.Resources>
+        <Style x:Key="TextStyle" TargetType="TextBox">
+            <Style.Setters>
+                <Setter Property="BorderThickness" Value="0"/>
+                <Setter Property="TextWrapping" Value="Wrap"/>
+                <Setter Property="Padding" Value="20 5"/>
+                <Setter Property="FontSize" Value="16"/>
+            </Style.Setters>
+        </Style>
+        
+        <Style x:Key="LabelToolStyle" TargetType="Label">
+            <Style.Setters>
+                <Setter Property="FontFamily" Value="pack://application:,,,/Resources/#icomoon"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="Foreground" Value="#9b9b9b"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#555555"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
+        <Style x:Key="SendStyle" TargetType="Label">
+            <Style.Setters>
+                <Setter Property="FontFamily" Value="pack://application:,,,/Resources/#icomoon"/>
+                <Setter Property="FontSize" Value="18"/>
+                <Setter Property="HorizontalContentAlignment" Value="Center"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style.Setters>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="False">
+                    <Setter Property="Foreground" Value="#387dff"/>
+                </Trigger>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Foreground" Value="#1a5edd"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="16*" MinHeight="270"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="7*" MinHeight="110"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Row="0" Background="White" CornerRadius="10 10 0 0 ">
+            <Grid>
+                <Label x:Name="name" Margin="20 0 0 0" MaxWidth="200" FontSize="16" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                <Label x:Name="time" Foreground="Gray" FontSize="14" HorizontalAlignment="Center" VerticalAlignment="Center" Loaded="Time_Loaded"/>
+            </Grid>
+        </Border>
+
+        <ScrollViewer Grid.Row="1" Padding="3" VerticalScrollBarVisibility="Auto">
+            <StackPanel Name="MsgBox" Orientation="Vertical">
+                <!--聊天区-->
+            </StackPanel>
+        </ScrollViewer>
+
+        <GridSplitter Grid.Row="2" Height="5" HorizontalAlignment="Stretch" VerticalAlignment="Center" IsTabStop="False"/>
+
+        <Border Grid.Row="3" CornerRadius="0 0 10 10" Background="White">
+            <DockPanel Margin="0 0 0 15">
+                <DockPanel Height="32" DockPanel.Dock="Top" Margin="20 0" LastChildFill="False">
+                    <Label Content="&#xe909;" Style="{StaticResource LabelToolStyle}" ToolTip="表情"/>
+                    <Label Content="&#xe90a;" Style="{StaticResource LabelToolStyle}" ToolTip="图片"/>
+                    <Label Content="&#xe90b;" Style="{StaticResource LabelToolStyle}" ToolTip="截图"/>
+                    <Label Content="&#xe904;" Style="{StaticResource LabelToolStyle}" ToolTip="选择文件"/>
+                    <Label Name="Label_send" Content="&#xe90d;" Style="{StaticResource SendStyle}" DockPanel.Dock="Right" ToolTip="发送" MouseDown="Send_MouseDown"/>
+                </DockPanel>
+                <TextBox Name="text_msg" Style="{StaticResource TextStyle}" KeyDown="TextBox_KeyDown"></TextBox>
+            </DockPanel>
+        </Border>
+    </Grid>
+</UserControl>
